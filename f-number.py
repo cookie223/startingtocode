@@ -1,23 +1,35 @@
 import sys
 
-def matrix_multi(list1, list2):
-    list3=[0,0,0,0]
-    list3[0]=list1[0]*list2[0]+list1[1]*list2[2]
-    list3[1]=list1[0]*list2[1]+list1[1]*list2[3]
-    list3[2]=list1[2]*list2[0]+list1[3]*list2[2]
-    list3[3]=list1[2]*list2[1]+list1[3]*list2[3]
-    return list3
-    
+class matrix22(object):
+    def __init__(self, a=0,b=0,c=0,d=0):
+        self.a = a
+        self.b = b
+        self.c = c
+        self.d = d
+    def __mul__(self, other):
+        a= self.a*other.a + self.b*other.c
+        b= self.a*other.b + self.b*other.d
+        c= self.c*other.a + self.d*other.c
+        d= self.c*other.b + self.d*other.d
+        return matrix22(a,b,c,d)
+    def pow2(self):
+        power2= self * self
+        return power2
 def f_n_matrix(n):
     if n == 1:
-        return [1,1,1,0]
+        return matrix22(1,1,1,0)
     elif n ==2:
-        return [2,1,1,1]
+        return matrix22(2,1,1,1)
     else:
-        return matrix_multi(f_n_matrix(n//2), f_n_matrix(n-n//2))
+        if n % 2 == 0:
+            res= f_n_matrix(n/2).pow2()
+        else :
+            res= f_n_matrix(n//2).pow2() * matrix22(1,1,1,0)
+        return res
         
 def f_number(n):
-    return f_n_matrix(n)[0]
+    res= f_n_matrix(n)
+    return res.a
     
 def main():
     print f_number(int(sys.argv[1]))
