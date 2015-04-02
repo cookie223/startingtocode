@@ -1,7 +1,7 @@
 digits = [8,9,9,9]
 
 def plusOne(digits):
-	if not digits:
+	if len(digits)==0:
 		return None
 	else:
 		digits[-1] +=1
