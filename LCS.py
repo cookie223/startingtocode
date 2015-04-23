@@ -1,6 +1,9 @@
 import sys
 
-def lcs_matrix(string1,string2):
+
+def lcs_matrix(string1, string2):
+
+
     'Learn the Dynamic Programming process'
     '''#Generate the matrix
     m0 = [0]*(len(string1)+1)
@@ -34,17 +37,11 @@ def lcs_matrix(string1,string2):
         else:
             assert string2[j-1]==string1[i-1]
             lcslist.insert(0,string2[j-1])
-            i-=1
-            j-=1
-    lcs="".join(lcslist)
+            i -= 1
+            j -= 1
+    lcs = "".join(lcslist)
     return lcs
 
-	
-
-	
-	
-	
-	
 def main():
 	print lcs_matrix(sys.argv[1],sys.argv[2])
 
