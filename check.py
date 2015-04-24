@@ -1,6 +1,7 @@
 import urllib
 import re
 
+
 def check():
     file1 = urllib.urlopen('http://www.cmu.edu/oie/newsandevents/orientation.html')
     part1 = re.search('<h1>International Graduate Student Orientation Programs<\/h1>\n<p>(.*)<\/p>', file1.read())
@@ -8,9 +9,10 @@ def check():
     part3 = re.search('Registration link to come',part1.group(0))
 #    print part1.group()
 #    try:
- #       print part2.group()
-  #  except:
-   #     print part3.group()
+#       print part2.group()
+#  except:
+
+#     print part3.group()
     if part2:
         return 1
     elif part3:
