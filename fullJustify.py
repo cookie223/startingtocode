@@ -21,7 +21,8 @@ def fullJustify(words, maxWidth):
     i = 0
     lastlinemarker = False
     while i < len(words):
-        while L + len(words[i]) <= maxWidth :
+        while L + len(words[i]) <= maxWidth:
+            # REALLY SHOULD THINK THROUGH +1? may < is better
             L = L + len(words[i]) + 1
             ltemp.append(words[i])
             # print len(words[i])
@@ -31,7 +32,7 @@ def fullJustify(words, maxWidth):
                 lastlinemarker = True
                 break
         nblanks = maxWidth - L + len(ltemp)
-        #print i, L, ltemp
+        # print i, L, ltemp
         if len(ltemp) == 1:
             lines.append(ltemp[0] + nblanks * ' ')
         elif len(ltemp) == 0:
